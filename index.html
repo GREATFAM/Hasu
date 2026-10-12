@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREAT FAM - Poppo Live Guide</title>  
+    <meta name="description" content="በዚህ website እንዴት በ poppo live ገንዘብ እንደሚሰራ ደረጃ በደረጃ በ video እና በምስል የተደገፈ ትምህርት ይሰጣል አሁኑኑ ተጭነው ከቤቶ ተቀምተው እንዴት ገንዘብ እንደሚሰራ ተመልክተው አሁኑን መቀላቀል ይችላሉ።">
+    <meta name="author" content="WEBSITE CREATOR AGENT NAHOM">
+    <meta property="og:title" content="GREAT FAM">
+    <meta property="og:description" content="በዚህ website እንዴት በ poppo live ገንዘብ እንደሚሰራ ደረጃ በደረጃ በ video እና በምስል የተደገፈ ትምህርት ይሰጣል አሁኑኑ ተጭነው ከቤቶ ተቀምተው እንዴት ገንዘብ እንደሚሰራ መመልከቱ ይችላሉ።">
+    <meta name="theme-color" content="#8f00ff">
+    <style>
+        :root {
+            --poppo-bg: #0C041C;            
+            --poppo-card: #180B30;           
+            --poppo-purple: #A146FC;       
+            --poppo-pink: #FF007F;         
+            --text-main: #FFFFFF;          
+            --text-sub: #A596BF;            
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--poppo-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        p, li, .card p, .section-desc, .info-highlight-box ul li {
+            font-weight: bold;
+        }
+
+        #lang-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 4, 28, 0.98);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: opacity 0.4s ease;
+        }
+        .lang-card {
+            background: var(--poppo-card);
+            border: 3px solid var(--poppo-purple);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(161, 70, 252, 0.5);
+        }
+        .lang-card h1 {
+            color: var(--poppo-pink);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .lang-card p {
+            color: var(--text-sub);
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+        .lang-btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .lang-btn {
+            background: linear-gradient(135deg, var(--poppo-purple), var(--poppo-pink));
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(161, 70, 252, 0.4);
+        }
+        .lang-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+
+        header {
+            background-color: var(--poppo-card);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 4%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(161, 70, 252, 0.15);
+            transition: all 0.4s ease;
+        }
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            max-height: 40px;
+            opacity: 1;
+            overflow: hidden;
+        }
+        .logo span {
+            color: var(--poppo-pink);
+        }
+
+        /* Scrolled Header Styling: Hides logo and centers navigation */
+        header.scrolled {
+            padding: 6px 3%;
+            background-color: rgba(24, 11, 48, 0.98);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+        }
+        header.scrolled .logo {
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+            pointer-events: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 12px;
+            padding: 6px 10px;
+            background-color: rgba(161, 70, 252, 0.15);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        nav ul li a:hover {
+            background-color: var(--poppo-pink);
+            box-shadow: 0 4px 12px rgba(255, 0, 127, 0.4);
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .scroll-animate {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .scroll-animate.active {
+            opacity: 1;
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        .hero {
+            padding: 80px 5% 60px 5%;
+            text-align: center;
+            background: linear-gradient(180deg, var(--poppo-card), var(--poppo-bg));
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: var(--text-sub);
+            max-width: 750px;
+            margin: 0 auto 25px auto;
+        }
+        .agent-photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 250px;        
+            margin: 25px auto;
+            border-radius: 10%;     
+            border: 3px solid var(--poppo-purple); 
+            box-shadow: 0 0 25px rgba(161, 70, 252, 0.4);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;     
+        }
+        .agent-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;       
+        }
+        .agent-msg-box {
+            background: linear-gradient(135deg, rgba(161, 70, 252, 0.2), rgba(255, 0, 127, 0.15));
+            border-left: 5px solid var(--poppo-pink);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .agent-msg-box p {
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: bold;
+            margin: 0;
+        }
+        .info-highlight-box {
+            background: rgba(161, 70, 252, 0.1);
+            border: 1px solid var(--poppo-purple);
+            max-width: 650px;
+            margin: 30px auto 0 auto;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+        }
+        .info-highlight-box ul {
+            list-style-type: none;
+        }
+        .info-highlight-box ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            position: relative;
+            padding-left: 20px;
+            color: #ffffff;
+        }
+        .info-highlight-box ul li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--poppo-pink);
+        }
+        section {
+            padding: 70px 8%;
+        }
+        section h2 {
+            font-size: 28px;
+            color: var(--poppo-purple);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .section-desc {
+            text-align: center;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            font-size: 15px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        .card {
+            background-color: var(--poppo-card);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid var(--poppo-purple);
+            box-shadow: 0 0 15px rgba(161, 70, 252, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--poppo-pink);
+            box-shadow: 0 15px 30px rgba(255, 0, 127, 0.3);
+        }
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: rgba(161, 70, 252, 0.05);
+            border-bottom: 2px solid var(--poppo-pink);
+            transition: all 0.3s ease;
+        }
+        .card h3 {
+            font-size: 24px;
+            color: var(--poppo-pink);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #ffffff;
+            font-size: 15px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .yt-link {
+            display: block;
+            background: linear-gradient(135deg, #FF0000, #cc0000);
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .yt-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+        }
+        .dl-container {
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            text-align: center;
+            background: linear-gradient(135deg, #1A0933, #2D1154);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px dashed var(--poppo-purple);
+        }
+        .dl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .dl-btn {
+            display: inline-block;
+            background-color: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        .dl-btn:hover {
+            background-color: #00a2f3;
+            transform: translateY(-2px);
+        }
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .c-btn {
+            text-decoration: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 255px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .btn-tg { background-color: #229ED9; }
+        .btn-wa { background-color: #25D366; }
+        .btn-yt { background-color: #FF0000; }
+        .btn-tt { background-color: #010101; border: 1px solid #fff; }
+        .c-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+        }
+        footer {
+            background-color: var(--poppo-card);
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(161, 70, 252, 0.1);
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px 3%;
+                gap: 8px;
+            }
+            header.scrolled {
+                flex-direction: row;
+                padding: 6px 2%;
+            }
+            .logo {
+                text-align: center;
+            }
+            nav ul {
+                width: 100%;
+                justify-content: center;
+                gap: 4px;
+            }
+            nav ul li a {
+                padding: 5px 7px;
+                font-size: 11px;
+            }
+            .hero h1 { font-size: 26px; }
+            section { padding: 40px 5%; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lang-overlay">
+        <div class="lang-card">
+            <h1>GREAT FAM</h1>
+            <p>እባክዎ የሚፈልጉትን ቋንቋ ይምረጡ / Maaloo afaan barbaaddan filadhaa:</p>
+            <div class="lang-btn-container">
+                <button class="lang-btn" onclick="setLanguage('am')">🇪🇹 አማረኛ (Amharic)</button>
+                <button class="lang-btn" onclick="setLanguage('or')">🇪🇹 Afaan Oromoo</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="amharic-content" class="page-content">
+        <header class="main-header">
+            <div class="logo">GREAT <span>FAM</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#am-home">ዋናው ገጽ</a></li>
+                    <li><a href="#am-download">ለማውረድ</a></li>
+                    <li><a href="#am-education">የስራ ዘርፎች</a></li>
+                    <li><a href="#am-contact">እኛን ለማግኘት</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="am-home" class="hero">
+            <h1 class="scroll-animate active">እንኳን ወደ Great Fam በሰላም መጡ!</h1>
+            <div class="agent-photo-container scroll-animate active">         
+                <img src="https://i.ibb.co/rGhWGH0r/20261019-112242.jpg" alt="Agent Photo" class="agent-img">
+            </div>
+            <div class="agent-msg-box scroll-animate active">
+                <p>
+                    <span style="color: var(--poppo-pink); font-size: 18px;">✨አሁኑኑ ይጀምሩ፦</span><br><br>
+                    "ኤጀንት Hasu እባላለሁ። <br>ፓፖ ላይ ረጅም ግዜ ሰርቻለሁ፤ እጅግ ደስተኛ የሆንኩበትና ካሰብኩት በላይ ገቢ እያገኘሁበት ስለሆነ እርሶም ትኩረት ሰጥተው ቢሰሩበት ልክ እንደኔ ከዛም በላይ ተጠቃሚ እንደሚሆኑ አረጋግጥሎታለሁ። ከስር ያሉትን videoዎች በቅደም ተከተል በማየት አሁኑኑ ስራዎን ይጀምሩ"
+                </p>
+            </div>   
+        </section>
+
+        <section id="am-download">
+            <h2 class="scroll-animate">አፕሊኬሽኑን ያውርዱ</h2>
+            <div class="info-highlight-box scroll-animate active">
+                <ul>
+                    <li>ለመመዝገብ ከታች ያለውን video በትኩረት ይመልከቱና ሲጨርሱ ከታች ያለውን ሊንክ ነክተው ይመዝገቡ 👇።</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="https://www.youtube.com/embed/FqeBNjbnsOU?autoplay=1" target="_blank" style="text-decoration: none;">
+                    <div style="position: relative; display: inline-block; width: 100%; max-width: 560px;">
+                        <img src="https://img.youtube.com/vi/3ftlskirDjA/hqdefault.jpg" alt="Poppo Live Registration" style="width:100%; display:block; border-radius:8px;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.9;">
+                          <svg height="60px" version="1.1" viewBox="0 0 68 48" width="60px">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,0.13,34,0.13,34,0.13S12.21,0.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,47.87,34,47.87s21.79,0,27.1-1.41c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#FFFFFF"></path>
+                          </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="dl-container scroll-animate">
+                <h3>Poppo Live App Download</h3>
+                <p style="color: var(--text-sub); margin-top: 10px; margin-bottom: 15px;">ከታች ባሉት ሊንኮች ተጠቅመው መመዝገብ ይችላሉ</p>
+                <div class="dl-grid">
+                    <a href="https://invite-poppo.com/YNa8fA" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 1</a>
+                    <a href="https://invite-poppo.com/fRWG4e" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 2</a>    
+                    <a href="https://invite-poppo.com/52Zzyx" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 3</a>   
+                    <a href="https://invite-poppo.com/F5psr5" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 4</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="am-education">
+            <h2 class="scroll-animate">Poppo Live የገንዘብ መስሪያ ዋና ዋና መንገዶች</h2>
+            <p class="section-desc scroll-animate">በአፑ ውስጥ ያሉትን 6 ዋና ዋና የገቢ ማግኛ መንገዶች ከታች ባሉት ዝርዝሮች ላይ መመልከት ይችላሉ።</p>
+            <div class="grid-container">
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/whqZMct7/Screenshot-20260808-125625.jpg" alt="Invitation" class="card-img">
+                        <h3>1. Invitation (ሰው መጋበዝ)</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            ሰውን በመጋበዝ ብቻ እስከ 16 ዶላር መሥራት ይቻላል፤ እንዴት invite እንደምታደርጉ እና እንዴት ገቢ እንደምታገኙበት ትምህርቱን ይመልከቱ።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=oKgzAL7DHmI" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a> 
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/LhHHz056/Screenshot-20260808-124819.jpg" alt="Agent" class="card-img">
+                        <h3>2. AGENT</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            Poppo Live ላይ ትልቅ ገቢ የሚገኝበት እና የማያቋርጥ ገቢ የሚገኝበት ትልቅ የስራ ዘርፍ ነው፤ ቪዲዮውን ተመልክተው ትምህርቱን ይውሰዱ።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=auolQZ4SS1o" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a>     
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/WWThgWG2/Screenshot-20260808-124933.jpg" alt="Best Salary Host" class="card-img">
+                        <h3>3. BEST SALARY HOST</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            ልዩ ችሎታ ካለዎት ይህ የእርስዎ ዘርፍ ነው፤ ሙዚቃ ወይም ያለዎትን ችሎታ ተጠቅመው ትልቅ ገቢ ማግኘት ይችላሉ። ትምህርቱን ይመልከቱ።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=gmExGvX6yMo" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a>              
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/XZr7NgQc/Screenshot-20260808-125440.jpg" alt="Quality Content" class="card-img">
+                        <h3>4. የቪዲዮ እና ፎቶ Creator</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            ቪዲዮዎችን እና ምስሎችን በመላክ እና poppo ላይ በሚመጡት ኤቨንት (event) ጥሩ coin ማግኘት ይቻላል።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=5mIO2gwEPoU" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a>
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/WN5VnXVd/Screenshot-20260808-125537.jpg" alt="Coin Seller" class="card-img">
+                        <h3>5. ኮይን ሻጭ (Coin Seller)</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            ይህ የማይቆረጥ ገቢ የሚገኝበት ሲሆን coin በመግዛት እና በመሸጥ ትርፍ ማግኘት ይቻላል።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=BuEnn9a3MqE" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a>      
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/dwsVNF2k/Screenshot-20260808-125257.jpg" alt="Gamer" class="card-img">
+                        <h3>6. GAMER እና Lucky Gift</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            Platform ላይ ያሉ ጨዋታዎችን በመጫወት coin ማግኘት ይችላሉ።
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=H-OAtK7uAHA" class="yt-link" target="_blank" rel="noopener noreferrer">▶ ትምህርቱን በ YouTube App ለመመልከት</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="am-contact" style="background-color: rgba(24, 11, 48, 0.4);">
+            <h2 class="scroll-animate">እኛን ያግኙን</h2>
+            <p class="section-desc scroll-animate">ማንኛውም ጥያቄ ካለዎት ወይም ተጨማሪ እገዛ ከፈለጉ በፈለጉት ማህበራዊ ሚዲያ ያግኙን</p>
+            <div class="contact-grid scroll-animate">
+                <a href="https://t.me/hasu_159" class="c-btn btn-tg" target="_blank">Telegram</a>
+                <a href="https://wa.me/0915165327" class="c-btn btn-wa" target="_blank">WhatsApp</a>
+                <a href="https://youtube.com/@greatfamily-h5k?si=1EQcbAieWXJ2xSEM" class="c-btn btn-yt" target="_blank">YouTube</a>
+                <a href="https://www.tiktok.com/@hasu.ismail2?_r=1&_t=ZS-988Dwg3qLlF" class="c-btn btn-tt" target="_blank">TikTok</a>
+            </div>
+        </section>
+
+        <footer>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                <p><b>created by WEB DESIGNER NAHOM</b></p>
+                <h5 style="color:#00c0ff; font-size: 15px; margin: 0;">
+                    📞 <a href="tel:0955266523" style="color:#00c0ff; text-decoration: none; font-weight: bold;">0955266523</a>
+                </h5>
+            </div>
+            <p style="color:#ff3333; text-align: center;"><b>ያለፈቃድ ዳግም መሸጥ ወይም ማባዛት በኢትዮጵያ የቅጂ መብት ህግ በጥብቅ የተከለከለ ነው።</b></p>
+        </footer>
+    </div>
+
+
+    <div id="oromo-content" class="page-content">
+        <header class="main-header">
+            <div class="logo">GREAT <span>FAM</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#or-home">Fuula Duraa</a></li>
+                    <li><a href="#or-download">Buufachuuf</a></li>
+                    <li><a href="#or-education">Dameewwan Hojii</a></li>
+                    <li><a href="#or-contact">Nu Quunnamuuf</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="or-home" class="hero">
+            <h1 class="scroll-animate active">Baga nagaan gara Great Fam dhuftan!</h1>
+            <div class="agent-photo-container scroll-animate active">         
+                <img src="https://i.ibb.co/rGhWGH0r/20261019-112242.jpg" alt="Agent Photo" class="agent-img">
+            </div>
+            <div class="agent-msg-box scroll-animate active">
+                <p>
+                    <span style="color: var(--poppo-pink); font-size: 18px;">✨Amma irraa eegala፦</span><br><br>
+                    "Maqaa koo Eejant Hasu jedhama. <br>Poppo irratti yeroo dheeraa hojjedheera; gammachuu guddaa fi galii yaadame ol argachaa kan jiru ta'uu isaatiin, isinis xiyyeeffannoo kennitanii yoo hojjetan akka kiyya ykn sana ol fayyadamaa akka taatan nan mirkaneessa. Vidiyootaa armaa gadii tartiibaan ilaaluun hojii keessan amma eegala."
+                </p>
+            </div>   
+        </section>
+
+        <section id="or-download">
+            <h2 class="scroll-animate">Appilikeeshinii Buufadha (Download)</h2>
+            <div class="info-highlight-box scroll-animate active">
+                <ul>
+                    <li>Galmaa'uuf vidiyoo armaa gadii xiinxalaan ilaalaa, yoo xumurtan liinkii armaa gadii tuquun galmaa'aa 👇.</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin: 25px 0;">
+                <a href="https://www.youtube.com/embed/FqeBNjbnsOU?autoplay=1" target="_blank" style="text-decoration: none;">
+                    <div style="position: relative; display: inline-block; width: 100%; max-width: 560px;">
+                        <img src="https://img.youtube.com/vi/3ftlskirDjA/hqdefault.jpg" alt="Poppo Live Registration" style="width:100%; display:block; border-radius:8px;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.9;">
+                          <svg height="60px" version="1.1" viewBox="0 0 68 48" width="60px">
+                            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,0.13,34,0.13,34,0.13S12.21,0.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,47.87,34,47.87s21.79,0,27.1-1.41c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#FFFFFF"></path>
+                          </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="dl-container scroll-animate">
+                <h3>Buufannaa Appii Poppo Live</h3>
+                <p style="color: var(--text-sub); margin-top: 10px; margin-bottom: 15px;">Liinkiiwwan armaa gadii fayyadamuun galmaa'uu dandeessu</p>
+                <div class="dl-grid">
+                                <a href="https://invite-poppo.com/YNa8fA" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 1</a>
+                    <a href="https://invite-poppo.com/fRWG4e" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 2</a>    
+                    <a href="https://invite-poppo.com/52Zzyx" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 3</a>   
+                    <a href="https://invite-poppo.com/F5psr5" class="dl-btn" target="_blank">📥 Poppo Live አማራጭ 4</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="or-education">
+            <h2 class="scroll-animate">Karaalee Gurguddoo Galii Ittiin Argatan Poppo Live</h2>
+            <p class="section-desc scroll-animate">Keessoo appichaa keessatti karaalee galii argamsiisan gurguddoo 6 armaa gadii irratti ilaalu dandeessu.</p>
+            <div class="grid-container">
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/whqZMct7/Screenshot-20260808-125625.jpg" alt="Invitation" class="card-img">
+                        <h3>1. Affeerraa (Invitation)</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            Namoota affuuruun qofa hanga dolaara 16 hojjechuun ni danda'ama; akkamitti invite gochuu akka dandeessan barumsicha ilaalaa.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=oKgzAL7DHmI" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a> 
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/LhHHz056/Screenshot-20260808-124819.jpg" alt="Agent" class="card-img">
+                        <h3>2. EJEENTII (AGENT)</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            Poppo Live irratti galii guddaa fi galii dhaabbataa itti argatan damee hojii guddaati; vidiyicha ilaaluun barumsicha fudhadhaa.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=auolQZ4SS1o" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a>     
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/WWThgWG2/Screenshot-20260808-124933.jpg" alt="Best Salary Host" class="card-img">
+                        <h3>3. HOST GALII GAARII (BEST SALARY HOST)</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            Dandeettiin addaa yoo qabaattan kun damee keessani; muuziqaa ykn dandeettii qabdan fayyadamuun galii guddaa argachuu dandeessu.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=gmExGvX6yMo" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a>              
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/XZr7NgQc/Screenshot-20260808-125440.jpg" alt="Quality Content" class="card-img">
+                        <h3>4. Uumaa Vidiyoo fi Suuraa (Creator)</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            Vidiyoo fi suuraawwan erguudhaan akkasumas event Poppo irratti dhufanirratti coin gaarii argachuu dandeessu.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=5mIO2gwEPoU" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a>
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/WN5VnXVd/Screenshot-20260808-125537.jpg" alt="Coin Seller" class="card-img">
+                        <h3>5. Gurguraa Koyiinii (Coin Seller)</h3>
+                        <p style="font-size: 14px; background: rgba(161, 70, 252, 0.15); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-purple);">
+                            Kun galii dhaabbataa kan argamsiisu yoo ta'u, coin bituu fi gurguruun bu'aa argachuu dandeessu.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=BuEnn9a3MqE" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a>      
+                </div>
+                <div class="card scroll-animate">
+                    <div>
+                        <img src="https://i.ibb.co/dwsVNF2k/Screenshot-20260808-125257.jpg" alt="Gamer" class="card-img">
+                        <h3>6. TAPHAATAA (GAMER) fi Lucky Gift</h3>
+                        <p style="font-size: 14px; background: rgba(255, 0, 127, 0.1); padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--poppo-pink);">
+                            Platformicharratti taphoota jiran taphachuun coin argachuu dandeessu.
+                        </p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=H-OAtK7uAHA" class="yt-link" target="_blank" rel="noopener noreferrer">▶ Barumsicha YouTube App irratti ilaaluuf</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="or-contact" style="background-color: rgba(24, 11, 48, 0.4);">
+            <h2 class="scroll-animate">Nu Quunnamaa</h2>
+            <p class="section-desc scroll-animate">Gaaffii kamiyyuu yoo qabaattan ykn gargaarsa dabalataa yoo barbaaddan miidiyaa hawaasaa barbaaddaniin nu quunnamaa</p>
+            <div class="contact-grid scroll-animate">
+                                <a href="https://t.me/hasu_159" class="c-btn btn-tg" target="_blank">Telegram</a>
+                <a href="https://wa.me/0915165327" class="c-btn btn-wa" target="_blank">WhatsApp</a>
+                <a href="https://youtube.com/@greatfamily-h5k?si=1EQcbAieWXJ2xSEM" class="c-btn btn-yt" target="_blank">YouTube</a>
+                <a href="https://www.tiktok.com/@hasu.ismail2?_r=1&_t=ZS-988Dwg3qLlF" class="c-btn btn-tt" target="_blank">TikTok</a>
+            </div>
+        </section>
+
+        <footer>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+                <p><b>Qopheessaan: WEB DESIGNER NAHOM</b></p>
+                <h5 style="color:#00c0ff; font-size: 15px; margin: 0;">
+                    📞 <a href="tel:0955266523" style="color:#00c0ff; text-decoration: none; font-weight: bold;">0955266523</a>
+                </h5>
+            </div>
+            <p style="color:#ff3333; text-align: center;"><b>Hayyama malee irra deebi'ee gurguruun ykn baay'isuun seera mirga abbaa qabeenyaa Itoophiyaatiin cimsamee dhorkadha.</b></p>
+        </footer>
+    </div>
+
+    <script>
+        // Language Selection Logic
+        function setLanguage(lang) {
+            document.getElementById('lang-overlay').style.display = 'none';
+            if(lang === 'am') {
+                document.getElementById('amharic-content').classList.add('active');
+                document.getElementById('oromo-content').classList.remove('active');
+                document.documentElement.lang = 'am';
+            } else {
+                document.getElementById('oromo-content').classList.add('active');
+                document.getElementById('amharic-content').classList.remove('active');
+                document.documentElement.lang = 'om';
+            }
+            window.scrollTo(0, 0);
+        }
+
+        // Header Scroll Effect & Hiding Logo on Scroll
+        window.addEventListener('scroll', function() {
+            const headers = document.querySelectorAll('header');
+            headers.forEach(header => {
+                if (window.scrollY > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
